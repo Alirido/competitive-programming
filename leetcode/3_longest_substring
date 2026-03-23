@@ -1,0 +1,10 @@
+class Solution(object):
+  def lengthOfLongestSubstring(self, s):
+    last_seen = {}
+    l = longest = 0
+    for r, x in enumerate(s):
+      if x in last_seen and last_seen[x] >= l:
+        l = last_seen[x] + 1
+      last_seen[x] = r
+      longest = max(longest, r - l + 1)
+    return longest
