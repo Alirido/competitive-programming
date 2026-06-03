@@ -22,4 +22,3 @@ class Solution:
           right = mid - 1
 
     return -1
-
