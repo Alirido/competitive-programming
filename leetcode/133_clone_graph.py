@@ -11,14 +11,14 @@ class Solution:
       return node
 
     visited = {}
-    def bfs(nd: Node) -> Optional['Node']:
+    def dfs(nd: Node) -> Optional['Node']:
       if nd.val in visited:
         return visited[nd.val]
       visited[nd.val] = Node(nd.val)
       nb = []
-      for _, v in enumerate(nd.neighbors):
-        nb.append(bfs(v))
+      for v in nd.neighbors:
+        nb.append(dfs(v))
       visited[nd.val].neighbors = nb
       return visited[nd.val]
 
-    return bfs(node)
+    return dfs(node)
