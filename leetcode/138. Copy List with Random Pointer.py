@@ -20,4 +20,3 @@ class Solution:
         old_to_new[cur].random = old_to_new[cur.random]
         cur = cur.next
     return old_to_new[head]
-
