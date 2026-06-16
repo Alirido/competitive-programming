@@ -22,3 +22,24 @@ class Solution:
           result += 1
           mark(i, j)
     return result
+
+  def numIslands(self, grid): # optimalize solution
+      result = 0
+      m, n = len(grid), len(grid[0])
+
+      def mark(start_i, start_j):
+          stack = [(start_i, start_j)]
+          grid[start_i][start_j] = "#"
+          while stack:
+              i, j = stack.pop()
+              for ni, nj in [(i-1,j),(i+1,j),(i,j-1),(i,j+1)]:
+                  if 0 <= ni < m and 0 <= nj < n and grid[ni][nj] == "1":
+                      grid[ni][nj] = "#"
+                      stack.append((ni, nj))
+
+      for i in range(m):
+          for j in range(n):
+              if grid[i][j] == "1":
+                  result += 1
+                  mark(i, j)
+      return result
